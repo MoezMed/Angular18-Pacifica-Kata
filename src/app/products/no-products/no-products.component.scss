@@ -1,0 +1,15 @@
+@import "../../../theme/colors.scss";
+
+.article-products {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  height: 255px;
+  font-weight: 500;
+  font-size: 19px;
+  line-height: 25px;
+  color: $brown;
+
+}

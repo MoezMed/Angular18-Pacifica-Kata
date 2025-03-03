@@ -1,0 +1,89 @@
+@import '../../../theme/theme-variables';
+@import '../../../theme/colors.scss';
+
+.card {
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-logo {
+  text-align: center;
+  margin-bottom: 1rem;
+
+  img {
+    max-width: 120px;
+    height: auto;
+  }
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.quantityAndAdd {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.quantityDisponible {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 80px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #e8f5fe;
+  color: #0066cc;
+}
+
+.quantityNonDisponible {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 80px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #f5f5f5;
+  color: #666;
+}
+
+.button {
+  padding: 5px 10px;
+  border-radius: 8px;
+  border: none;
+  background-color: #0066cc;
+  color: white;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: $light-blue;
+  }
+}
+
+.btn_special {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  background-color: #cccccc;
+  color: #666;
+  font-weight: 600;
+  cursor: not-allowed;
+}

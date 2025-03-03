@@ -1,0 +1,111 @@
+.basket-container {
+  padding: 20px;
+
+  .retour {
+    padding: 10px 20px;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+
+    &::before {
+      content: "<<";
+      position: absolute;
+      left: -30px;
+      opacity: 0;
+      transition: all 0.10ms ease;
+    }
+
+    &:hover {
+      background: #e9ecef;
+      padding-left: 35px;
+
+      &::before {
+        left: 10px;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.TabQuantityAndTaxed {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  margin-top: 20px;
+
+  .products-table-container {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .totals-container {
+    width: 400px;
+    flex-shrink: 0;
+  }
+}
+
+.tableTotalTaxes {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+
+  th {
+    background: #f8f9fa;
+    padding: 15px;
+    font-size: 1.1em;
+    color: #2c3e50;
+    border-bottom: 2px solid #dee2e6;
+  }
+
+  tr {
+    &:hover {
+      background-color: #f8f9fa;
+    }
+
+    td {
+      padding: 15px;
+      border-bottom: 1px solid #dee2e6;
+      color: #2c3e50;
+      font-weight: 500;
+      text-align: right;
+
+      &:first-child {
+        border-right: 1px solid #dee2e6;
+      }
+    }
+  }
+
+  .btn-payment {
+    width: 100%;
+    padding: 15px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background: #0056b3;
+    }
+  }
+}
+  .NoBacketMessage {
+    margin: 50px auto;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #6c757d;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }

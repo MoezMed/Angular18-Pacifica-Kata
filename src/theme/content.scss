@@ -1,0 +1,12 @@
+.content {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  padding-bottom: 45px;
+  max-width: 1120px;
+  margin: auto;
+
+@media (max-width: 1200px) {
+    margin: 15px 40px 0 40px;
+  }
+}

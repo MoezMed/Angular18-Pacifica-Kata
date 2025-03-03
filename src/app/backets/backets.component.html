@@ -1,0 +1,37 @@
+<div class="basket-container">
+  <div class="justify-content-space-between">
+    <button class="retour" routerLink="/products">Retour</button>
+  </div>
+
+  <div class="TabQuantityAndTaxed" *ngIf="basket.products.length>0">
+    <div class="products-table-container">
+      <app-product-table *ngFor="let product of basket.products"
+                         (basketUpdated)="setBasketandCalculateTaxes($event)"
+                         [product]="product"></app-product-table>
+    </div>
+    <div class="totals-container">
+      <table class="tableTotalTaxes">
+        <thead>
+        <tr>
+          <th colspan="2">Totales</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Totale Taxes</td>
+          <td>{{basket.total_Taxes | mycurrency}}</td>
+        </tr>
+        <tr>
+          <td>Totale TTC</td>
+          <td>{{basket.price_total_TTC | mycurrency}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <button class="btn-payment" routerLink="/payment" >Payer vos produits</button>
+    </div>
+  </div>
+
+  <div *ngIf="basket.products.length === 0">
+    <div class="NoBacketMessage">Panier vide</div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+/*
+ * Entry point of global application style.
+ * Component-specific style should not go here and be included directly as part of the components.
+ */
+
+// Theme variables, must be included before the libraries to allow overriding defaults
+@import '@fortawesome/fontawesome-free/css/all.css';
+@import 'theme/theme-variables';
+@import 'theme/button';
+@import 'theme/card';
+@import 'theme/flex';
+@import 'theme/list-group';
+@import 'theme/select';
+@import 'theme/table';
+@import 'theme/paginator';
+// 3rd party libraries
+
+// Theme customization
+@import 'theme/theme';

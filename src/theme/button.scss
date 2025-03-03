@@ -1,0 +1,54 @@
+.btn {
+    position: relative;
+    float: right;
+    height: 30px;
+    width: 40%;
+    border-radius: 25px;
+    overflow: hidden;
+    outline: none;
+    border: none;
+    font-size: $font-size;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    &.btn-primary {
+        color: white;
+        background-color: forestgreen;
+    }
+}
+
+.btn_special {
+  position: relative;
+  float: right;
+  height: 30px;
+  width: 40%;
+  border-radius: 25px;
+  overflow: hidden;
+  outline: none;
+  border: none;
+  font-size: $font-size;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: not-allowed;
+  &.btn-primary {
+    color: white;
+    background-color: dimgrey;
+  }
+}
+
+.retour{
+  height: 50px;
+  width: 100px;
+  border-radius: 0;
+  outline: none;
+  border: none;
+  font-size: $font-size;
+  font-weight: 400;
+  letter-spacing: 3px;
+  cursor: pointer;
+  &.btn-primary {
+    color: white;
+    background-color: BlueViolet;
+  }
+
+}

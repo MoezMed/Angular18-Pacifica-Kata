@@ -1,0 +1,31 @@
+<section class="content">
+<div class="title-filter" (click)="toggleFilter()">
+  Affiner la sélection
+  <span class="toggle-icon">{{ isFilterOpen ? '▼' : '▶' }}</span>
+  <span class="libelle-total-product">{{ libelleNombreTotalProducts }}</span>
+</div>
+
+<div class="filter" [ngClass]="{'filter-open': isFilterOpen}">
+  <div class="search-bar">
+    <input [formControl]="filtreForm.controls.filtreProductNameForm" type="search" placeholder="Rechercher un produit...">
+  </div>
+  <pacifica-select
+    [control]="filtreForm.controls.filtreCategoryForm"
+    [isRequired]="false"
+    [itemsValue]="filtreCategoryCheckbox"
+    [label]="'Catégorie des produits'">
+  </pacifica-select>
+  <pacifica-select
+    [control]="filtreForm.controls.filtreIsImportedForm"
+    [isRequired]="false"
+    [itemsValue]="importOptions"
+    [label]="'Emporté'">
+  </pacifica-select>
+  <pacifica-select
+    [control]="filtreForm.controls.sortPriceForm"
+    [isRequired]="false"
+    [itemsValue]="sortOptions"
+    [label]="'Trier par prix'">
+  </pacifica-select>
+</div>
+</section>

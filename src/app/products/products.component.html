@@ -1,0 +1,30 @@
+<section class="content">
+  @if (allProducts && allProducts.length > 0) {
+    <app-filter class="filters" [products]="allProducts"
+                (filterToApply)="ApplyFilterToProductList($event)"></app-filter>
+  }
+  @if (products && products.length > 0) {
+    <div class="product_list">
+      <div class="card-elements">
+        @for (product of products | slice : first: lastItem; track product.id) {
+          <app-product-card
+            class="card-item"
+            [product]="product"
+            [basket]="basket"
+            (basketUpdated)="updateBasket($event)"
+            data-test="product-card">
+          </app-product-card>
+        }
+      </div>
+      <p-paginator
+        [ngClass]="{'p-disabled' : isDisabledAllButton}"
+        [first]="first"
+        [rows]="nbProductParLot"
+        [totalRecords]="products.length"
+        (onPageChange)="onPageChange($event)">
+      </p-paginator>
+    </div>
+  } @else {
+    <app-no-products></app-no-products>
+  }
+</section>

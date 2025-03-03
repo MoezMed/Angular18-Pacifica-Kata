@@ -1,0 +1,32 @@
+<div class="card">
+  <div class="card-body">
+    <div class="card-logo">
+      <img src="{{product.category | logoByCategory}}" alt="logo">
+    </div>
+
+    <h2 class="card-title" data-test="card-title">{{ product.productName }}</h2>
+    <div>
+      Categorie: {{ product.category }}
+    </div>
+    <div>
+      Prix:  {{ product.price | mycurrency }}
+    </div>
+    <div>
+
+    </div>
+    <div class="quantityAndAdd">
+      <div [ngClass]="{'quantityDisponible': product.quantity > 0,'quantityNonDisponible':product.quantity === 0}">
+        {{valueQuantity}}
+      </div>
+
+      <button [ngClass]="{'button':product.quantity > 0,'btn_special':product.quantity === 0}"
+              class="btn btn-primary"
+              [disabled]="product.quantity === 0"
+              (click)="addProductToBasket(product)">Ajouter
+      </button>
+    </div>
+    <div>
+     Nouveau Article Ajouté : {{ product.nbrArticleAddedToBasket || 0 }}
+    </div>
+  </div>
+</div>
