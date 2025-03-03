@@ -41,6 +41,7 @@ export class ProductTableComponent implements OnInit {
 
     this.basket.products.splice(indexProductToDelete, 1);
     this.products[indexProductToUpdate].quantity+=QuantityAlreadyAdded;
+    this.products[indexProductToUpdate].nbrArticleAddedToBasket = 0;
 
     this.productService.setProductList(this.products);
     this.basketUpdated.emit(this.basket);
@@ -49,42 +50,6 @@ export class ProductTableComponent implements OnInit {
 
   updateArticleQuantity(isIncrement: boolean, product: Product) {
     // Find product in basket
-    const basketProduct = this.basket.products.find(p => p.id === product.id);
-
-    if (basketProduct) {
-      if (isIncrement) {
-        basketProduct.nbrArticleAddedToBasket++;
-        basketProduct.quantity--;
-      } else {
-        basketProduct.nbrArticleAddedToBasket--;
-        basketProduct.quantity++;
-      }
-    }
-
-    // Update products list
-    this.products = this.products.map(p => {
-      if (p.id === product.id) {
-        return {
-          ...p,
-          nbrArticleAddedToBasket: basketProduct?.nbrArticleAddedToBasket || 0,
-          quantity: basketProduct?.quantity || p.quantity
-        };
-      }
-      return p;
-    });
-
-    // Update current product if needed
-    if (this.product?.id === product.id) {
-      this.product = {
-        ...this.product,
-        nbrArticleAddedToBasket: basketProduct?.nbrArticleAddedToBasket || 0,
-        quantity: basketProduct?.quantity || this.product.quantity
-      };
-    }
-
-    // Emit updates
-    this.productService.setProductList(this.products);
-    this.basket.products = this.products;
-    this.basketUpdated.emit(this.basket);
-  }
+    //TODO: find product in basket
+}
 }

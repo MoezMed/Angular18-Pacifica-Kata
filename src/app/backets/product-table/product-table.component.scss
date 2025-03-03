@@ -1,3 +1,5 @@
+@import "../../../../src/theme/colors.scss";
+
 .content {
   margin: 15px 0;
 
@@ -13,73 +15,89 @@
       transition: background-color 0.2s ease;
 
       &:hover {
-        background-color: #f8f9fa;
+        background-color: $light-grey;
       }
 
       .td {
         padding: 15px;
-        border-bottom: 1px solid #dee2e6;
+        border-bottom: 1px solid $white;
         color: #2c3e50;
         font-weight: 500;
+        text-align: center;
+        white-space: nowrap;
 
         &:first-child {
           font-weight: 600;
         }
-        .quantity-control {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-
-          .quantity-btn {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            border: none;
-            cursor: pointer;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
-
-            &.minus {
-              background-color: #ff4444;
-              color: white;
-              &:hover {
-                background-color: #cc0000;
-              }
-            }
-
-            &.plus {
-              background-color: #00C851;
-              color: white;
-              &:hover {
-                background-color: #007E33;
-              }
-            }
-          }
-
-          .quantity-value {
-            font-size: 16px;
-            min-width: 40px;
-            text-align: center;
-          }
-        }
-
-        button {
-          background-color: #dc3545;
-          color: white;
-          border: none;
-          padding: 8px 16px;
-          border-radius: 4px;
-          cursor: pointer;
-          transition: background-color 0.2s ease;
-          align-content: center;
-          &:hover {
-            background-color: #c82333;
-          }
-        }
       }
     }
+  }
+}
+
+.quantity-control {
+  display: inline-flex;
+  justify-content: space-around;
+  gap: 10px;
+  min-width: 150px;
+  position: relative;
+
+  .quantity-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 10%;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    transition: all 0.2s ease;
+    margin: 3px;
+    position: relative;
+    z-index: 1;
+
+    &.minus {
+      background-color: $grey;
+      color: $white;
+      border: 1px solid $grey;
+
+      &:hover {
+        background-color: $light-grey;
+        color: $white;
+        border: 1px solid $grey;
+      }
+    }
+
+    &.plus {
+      background-color: $green;
+      color: white;
+
+      &:hover {
+        background-color: $white;
+        color: $green;
+      }
+    }
+  }
+
+  .quantity-value {
+    font-size: 16px;
+    min-width: 40px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+}
+
+.delete-btn {
+  background-color: $red;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: $white;
+    color: $red;
+    border: 1px solid $red;
   }
 }
