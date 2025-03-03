@@ -103,13 +103,15 @@
   }
 }
   .NoBacketMessage {
-    margin: 50px auto;
-    text-align: center;
-    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    height: 255px;
     font-weight: 600;
-    color: $light-grey;
-    padding: 30px;
-    background: $white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 25px;
+    line-height: 25px;
+    color: $brown;
+
   }

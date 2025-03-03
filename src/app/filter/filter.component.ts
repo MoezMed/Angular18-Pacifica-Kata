@@ -3,7 +3,7 @@ import {Product} from '../shared/model/product';
 import {FilterModel} from '../shared/model/filter';
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {InfoTofiltreModel} from '../shared/model/infoTofiltre.model';
-import {NgClass, NgForOf} from '@angular/common';
+import {NgClass} from '@angular/common';
 import {
   PacificaSelectCommunComponent
 } from '../shared/commun/pacifica-select/component/pacifica-select-commun.component';
@@ -15,7 +15,6 @@ import {ItemValue} from '../shared/commun/pacifica-select/model/ItemValue';
   styleUrls: ['./filter.component.scss'],
   standalone: true,
   imports: [
-    NgForOf,
     PacificaSelectCommunComponent,
     NgClass,
     ReactiveFormsModule

@@ -53,6 +53,8 @@
     margin: 3px;
     position: relative;
     z-index: 1;
+    align-items: center;
+    justify-items: center;
 
     &.minus {
       background-color: $grey;
@@ -64,6 +66,11 @@
         color: $white;
         border: 1px solid $grey;
       }
+      &:disabled {
+        background-color: $white;
+        color: $grey;
+        cursor: not-allowed;
+      }
     }
 
     &.plus {
@@ -73,6 +80,11 @@
       &:hover {
         background-color: $white;
         color: $green;
+      }
+      &:disabled {
+        background-color: $white;
+        color: $grey;
+        cursor: not-allowed;
       }
     }
   }

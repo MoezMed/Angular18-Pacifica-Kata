@@ -1,27 +1,37 @@
-<div class="content">
-  <div>
+<div class="products-table-container">
+  <div class="content">
     <table class="table">
-      <tr class="tr">
-        <td class="td">
-          {{ product.productName === null || product.productName === '' ?  'No Name mentionned' :product.productName}}
-        </td>
-        <td class="td">
-          <div class="quantity-control">
-            <button class="quantity-btn minus" (click)="updateArticleQuantity(false, product)" [disabled]="product.nbrArticleAddedToBasket <= 1"> - </button>
-            <span class="quantity-value">{{ product.nbrArticleAddedToBasket }}</span>
-            <button class="quantity-btn plus" (click)="updateArticleQuantity(true, product)" [disabled]="product.quantity <= 0"> + </button>
-          </div>
-        </td>
-        <td class="td">
-          Taxes :  {{ product.taxes | mycurrency }}
-        </td>
-        <td class="td">
-          Prix unitaire TTC :  {{ product.priceTTC  | mycurrency }}
-        </td>
-        <td class="td">
-          <button class="delete-btn" data-test="order-btn" (click)="deleteAProduct(product)">Delete</button>
-        </td>
-      </tr>
+      @for (product of basket.products; track product.id) {
+        <tr class="tr">
+          <td class="td">
+            {{
+              product.productName == null || product.productName === ''
+                ? 'No Name mentionned'
+                : product.productName
+            }}
+          </td>
+          <td class="td">
+            <div class="quantity-control">
+              <button class="quantity-btn minus" (click)="updateArticleQuantity(false, product)"
+                      [disabled]="product.nbrArticleAddedToBasket <= 1"> -
+              </button>
+              <span class="quantity-value">{{ product.nbrArticleAddedToBasket }}</span>
+              <button class="quantity-btn plus" (click)="updateArticleQuantity(true, product)"
+                      [disabled]="product.nbrArticleAddedToBasket === product.quantity"> +
+              </button>
+            </div>
+          </td>
+          <td class="td">
+            Taxes :  {{ product | calculateTaxe | mycurrency }}
+          </td>
+          <td class="td">
+            Prix unitaire TTC :  {{ ((product | calculateTaxe) + product.price) | mycurrency }}
+          </td>
+          <td class="td">
+            <button class="delete-btn" data-test="order-btn" (click)="deleteAProduct(product)">Delete</button>
+          </td>
+        </tr>
+      }
     </table>
   </div>
 </div>

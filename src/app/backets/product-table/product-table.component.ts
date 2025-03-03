@@ -3,6 +3,7 @@ import {ProductsService} from '../../shared/services/products.service';
 import {Product} from '../../shared/model/product';
 import {MycurrencyPipe} from '../../shared/pipes/mycurrency';
 import {Basket} from '../../shared/model/basket';
+import {calculateTaxesPipe} from '../../shared/pipes/calculateTaxe';
 
 @Component({
   selector: 'app-product-table',
@@ -10,16 +11,17 @@ import {Basket} from '../../shared/model/basket';
   styleUrls: ['./product-table.component.scss'],
   standalone: true,
   imports: [
-    MycurrencyPipe
+    MycurrencyPipe,
+    calculateTaxesPipe
   ]
 })
 export class ProductTableComponent implements OnInit {
   @Input() product!: Product;
-  @Output() basketUpdated: EventEmitter<Basket>  = new EventEmitter<Basket>;
+  @Output() basketUpdated: EventEmitter<Basket> = new EventEmitter<Basket>;
   products: Product[] = [];
-  basket!: Basket;
 
   private readonly productService = inject(ProductsService);
+  @Input() basket!: Basket;
 
   /**
    * method ngOnInit
@@ -37,10 +39,10 @@ export class ProductTableComponent implements OnInit {
   deleteAProduct(product: Product) {
     const indexProductToDelete = this.basket.products.findIndex(p => p.id === product.id);
     const indexProductToUpdate = this.products.findIndex(p => p.id === product.id);
-    const QuantityAlreadyAdded= this.basket.products[indexProductToDelete].nbrArticleAddedToBasket;
+    const QuantityAlreadyAdded = this.basket.products[indexProductToDelete].nbrArticleAddedToBasket;
 
     this.basket.products.splice(indexProductToDelete, 1);
-    this.products[indexProductToUpdate].quantity+=QuantityAlreadyAdded;
+    this.products[indexProductToUpdate].quantity += QuantityAlreadyAdded;
     this.products[indexProductToUpdate].nbrArticleAddedToBasket = 0;
 
     this.productService.setProductList(this.products);
@@ -49,7 +51,7 @@ export class ProductTableComponent implements OnInit {
   }
 
   updateArticleQuantity(isIncrement: boolean, product: Product) {
-    // Find product in basket
-    //TODO: find product in basket
-}
+    //TODO Add code here
+
+  }
 }

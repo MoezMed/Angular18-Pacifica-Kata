@@ -88,6 +88,6 @@ export class ProductCardComponent implements OnInit {
    */
 
   private updateQuantity(product: Product): void {
-    this.valueQuantity = product.quantity > 0 ? "Quantité:" + product.quantity : "Non disponible";
+    this.valueQuantity = product.quantity > 0 ? "Quantité: " + product.quantity : "Non disponible";
   }
 }

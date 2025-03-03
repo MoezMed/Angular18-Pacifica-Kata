@@ -1,13 +1,20 @@
 <article class="select-wrapper" [ngClass]="{ 'error': !control.valid, 'valid': control.valid }">
 
-  <select [formControl]="control" [attr.data-value-css]="control.value" [id]="labelId" [name]="labelId">
-    <option value="" *ngIf="!isRequired"></option>
-    <option *ngFor="let state of itemsValue" [ngValue]="state.value">
-      {{ state.label }}
-    </option>
+  <select [formControl]="control"
+          [attr.data-value-css]="control.value"
+          [id]="labelId"
+          [name]="labelId">
+    @if (!isRequired) {
+      <option value=""></option>
+    }
+    @for (state of itemsValue; track state.value) {
+      <option [ngValue]="state.value">
+        {{ state.label }}
+      </option>
+    }
   </select>
 
-  <label [for]="labelId">{{labelString}}</label>
+  <label [for]="labelId">{{ labelString }}</label>
 
   <div class="icon">
     <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -3,7 +3,7 @@ import {RouterLink} from '@angular/router';
 import {ProductsService} from '../shared/services/products.service';
 import {Product} from '../shared/model/product';
 import {ProductCardComponent} from './products-card/product-card.component';
-import {NgClass, NgForOf, NgIf, SlicePipe} from '@angular/common';
+import {NgClass, SlicePipe} from '@angular/common';
 import {FilterComponent} from '../filter/filter.component';
 import {FilterModel} from '../shared/model/filter';
 import {Paginator, PaginatorModule} from 'primeng/paginator';
@@ -15,7 +15,7 @@ import {Basket} from '../shared/model/basket';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
   standalone: true,
-  imports: [ProductCardComponent, RouterLink, NgIf, NgForOf, NgClass, FilterComponent, Paginator, SlicePipe, PaginatorModule, NoProductsComponent,],
+  imports: [ProductCardComponent, RouterLink, NgClass, FilterComponent, Paginator, SlicePipe, PaginatorModule, NoProductsComponent,],
 })
 export class ProductsComponent implements OnInit {
 
@@ -48,7 +48,6 @@ export class ProductsComponent implements OnInit {
             this.products = products;
             this.allProducts = [...products];
             this.productsService.setProductList(products);
-            this.calculateTaxes();
           });
         }
       }
@@ -57,36 +56,6 @@ export class ProductsComponent implements OnInit {
     this.basket = this.productsService.getBasket();
   }
 
-  /**
-   * method to calculate taxes based on some parameters
-   * @returns void
-   */
-  private calculateTaxes(): void {
-    this.products.forEach(product => {
-      let taxAdded = 0;
-      if (product.isImported) {
-        taxAdded = product.price * 0.05;
-      }
-      switch (product.category) {
-        case 'Food':
-          product.taxes = taxAdded;
-          break;
-        case 'Medecine':
-          product.taxes = taxAdded;
-          break;
-        case 'Books': {
-          product.taxes = product.price * 0.1 + taxAdded;
-          break;
-        }
-        default: {
-          product.taxes = product.price * 0.2 + taxAdded;
-        }
-      }
-      //Arround of taxes
-      product.taxes = Math.round(product.taxes * 20) / 20.0;
-      product.priceTTC = product.price + product.taxes;
-    });
-  }
 
   /**
    * method to filter products by category, product name and is imported
@@ -109,7 +78,7 @@ export class ProductsComponent implements OnInit {
       );
     }
 
-    if (filter.isImported !== undefined && filter.isImported !== null) {
+    if (filter.isImported !== undefined && filter.isImported !== '') {
       filteredProducts = filteredProducts.filter(product =>
         product.isImported === filter.isImported
       );

@@ -16,7 +16,7 @@
     </div>
     <div class="quantityAndAdd">
       <div [ngClass]="{'quantityDisponible': product.quantity > 0,'quantityNonDisponible':product.quantity === 0}">
-        {{valueQuantity}}
+        {{valueQuantity }}
       </div>
 
       <button [ngClass]="{'button':product.quantity > 0,'btn_special':product.quantity === 0}"
