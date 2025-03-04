@@ -1,9 +1,40 @@
 @import "../../../theme/colors.scss";
+
 .suppression-popup {
   .p-dialog {
     background-color: lightgrey;
     width: 400px;
-    height: auto;
+    height: 150px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    border: 1px solid $white;
+    border-radius: 4px;
+
+    p-dialog-header {
+      background-color: lightgrey;
+      font-family: 'Relative', serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 36px;
+      color: #381A0A;
+
+      .p-dialog .p-dialog-header .p-dialog-title,
+      .p-dialog, .p-dialog-header, .p-dialog-title, .p-dialog-titlebar, .p-dialog-titlebar-icon, .p-dialog-titlebar-close,
+      .p-dialog-content, .p-dialog-footer {
+        width: 400px;
+        height: 36px;
+        font-family: 'Relative', serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 28px;
+        line-height: 36px;
+        color: #381A0A;
+        flex: none;
+        order: 0;
+        align-self: stretch;
+        flex-grow: 0;
+      }
+    }
   }
 
   .message-text {
@@ -23,18 +54,37 @@
   .buttons-bloc {
     display: flex;
     justify-content: flex-end;
-    gap: 8px;
+    gap: 10px;
 
     .btn-delete-container {
+      height: 20%;
       color: $white;
       border-color: $red;
       background-color: $red;
+      border: 1px solid $white;
+      border-radius: 4px;
 
       &:hover {
-        background-color: $brown;
-        border-color: $brown;
+        background-color: $white;
+        border-color: $red;
+        color: $red;
+      }
+    }
+
+    .btn-cancel-container {
+      height: 20%;
+      color: $red;
+      border-color: $red;
+      background-color: $white;
+      border: 1px solid $red;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: $red;
+        border-color: $white;
         color: $white;
       }
     }
   }
+
 }

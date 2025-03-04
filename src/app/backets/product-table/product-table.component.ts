@@ -25,6 +25,7 @@ export class ProductTableComponent implements OnInit {
   private readonly productService = inject(ProductsService);
   @Input() basket!: Basket;
   displayDialogSuppression= false;
+  selectedProduct!: Product;
 
   /**
    * method ngOnInit
@@ -56,5 +57,10 @@ export class ProductTableComponent implements OnInit {
   updateArticleQuantity(isIncrement: boolean, product: Product) {
     //TODO Add code here
 
+  }
+
+  openDeleteDialog(product: Product) {
+    this.selectedProduct = product;
+    this.displayDialogSuppression = true;
   }
 }

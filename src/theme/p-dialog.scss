@@ -1,0 +1,63 @@
+@import '../theme/colors.scss';
+
+p-dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  position: relative;
+  width: 400px;
+  height: 200px;
+
+  .p-dialog .p-dialog-header {
+    background: $white;
+    color: #333333;
+    .p-dialog .p-dialog-header {
+      background: $white;
+      color: #333333;
+    .p-dialog .p-dialog-header .p-dialog-title,
+    .p-dialog, .p-dialog-header, .p-dialog-title, .p-dialog-titlebar, .p-dialog-titlebar-icon, .p-dialog-titlebar-close,
+    .p-dialog-content, .p-dialog-footer {
+      width: 400px;
+      height: 36px;
+      font-family: 'Relative', serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 36px;
+      color: #381A0A;
+      flex: none;
+      order: 0;
+      align-self: stretch;
+      flex-grow: 0;
+    }
+    }
+    .p-dialog .p-dialog-header .p-dialog-header-icon,
+    .p-dialog-header-icons > button {
+      padding: 14px;
+      font-family: "Relative", Arial, sans-serif;
+      color: $brown;
+    }
+
+    .p-dialog-header-close-icon {
+      font-size: 16px;
+    }
+  }
+
+  .p-dialog .p-dialog-footer button {
+    font-family: "Relative", Arial, sans-serif;
+    padding: 9px;
+    color: $white;
+    background-color: $blue;
+    margin-left: 10px;
+
+    & > span {
+      font-size: 15px;
+      padding: 0 3px
+    }
+  }
+
+  .p-dialog-content, .p-dialog-footer {
+    padding: 20px;
+  }
+}
