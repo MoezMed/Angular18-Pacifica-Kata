@@ -28,10 +28,19 @@
             Prix unitaire TTC :  {{ ((product | calculateTaxe) + product.price) | mycurrency }}
           </td>
           <td class="td">
-            <button class="delete-btn" data-test="order-btn" (click)="deleteAProduct(product)">Delete</button>
+            <button class="delete-btn" data-test="order-btn" (click)="displayDialogSuppression = true">Delete</button>
           </td>
         </tr>
+        @if(displayDialogSuppression) {
+          <app-popup-delete-dialog
+            (closePopup)="displayDialogSuppression = $event"
+            (confirmSuppression)=" $event ? deleteAProduct(product) : null"
+            [showPopupDelete]="displayDialogSuppression"
+            [product]="product">
+          </app-popup-delete-dialog>
+        }
       }
     </table>
   </div>
+
 </div>

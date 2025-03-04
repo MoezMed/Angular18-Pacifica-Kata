@@ -23,7 +23,8 @@ export class BacketsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.productsService.getProductList().subscribe(
+    this.productsService.getProductList()
+      .subscribe(
       productList => {
         this.products = productList;
         this.basket = this.productsService.getBasket();

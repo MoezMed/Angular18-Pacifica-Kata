@@ -1,0 +1,40 @@
+@import "../../../theme/colors.scss";
+.suppression-popup {
+  .p-dialog {
+    background-color: lightgrey;
+    width: 400px;
+    height: auto;
+  }
+
+  .message-text {
+    font-family: 'Relative', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    color: $brown;
+    margin-bottom: 20px;
+
+    .bold {
+      font-weight: bold;
+    }
+  }
+
+  .buttons-bloc {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+
+    .btn-delete-container {
+      color: $white;
+      border-color: $red;
+      background-color: $red;
+
+      &:hover {
+        background-color: $brown;
+        border-color: $brown;
+        color: $white;
+      }
+    }
+  }
+}

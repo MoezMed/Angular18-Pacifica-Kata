@@ -4,6 +4,7 @@ import {Product} from '../../shared/model/product';
 import {MycurrencyPipe} from '../../shared/pipes/mycurrency';
 import {Basket} from '../../shared/model/basket';
 import {calculateTaxesPipe} from '../../shared/pipes/calculateTaxe';
+import {PopupDeleteComponent} from '../../products/popup-delete/popup-delete.component';
 
 @Component({
   selector: 'app-product-table',
@@ -12,7 +13,8 @@ import {calculateTaxesPipe} from '../../shared/pipes/calculateTaxe';
   standalone: true,
   imports: [
     MycurrencyPipe,
-    calculateTaxesPipe
+    calculateTaxesPipe,
+    PopupDeleteComponent
   ]
 })
 export class ProductTableComponent implements OnInit {
@@ -22,6 +24,7 @@ export class ProductTableComponent implements OnInit {
 
   private readonly productService = inject(ProductsService);
   @Input() basket!: Basket;
+  displayDialogSuppression= false;
 
   /**
    * method ngOnInit
