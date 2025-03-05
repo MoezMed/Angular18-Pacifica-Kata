@@ -1,7 +1,8 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, inject, OnDestroy} from '@angular/core';
 import {MycurrencyPipe} from '../shared/pipes/mycurrency';
 import {Subscription} from 'rxjs';
 import {ProductsService} from '../shared/services/products.service';
+import {BasketService} from '../shared/services/basket.service';
 
 @Component({
   selector: 'app-payment',
@@ -16,8 +17,11 @@ export class PaymentComponent implements OnDestroy {
   totaleAmount: number = 0;
   private subscription: Subscription;
 
-  constructor(private productService: ProductsService) {
-    this.subscription = this.productService.$basket.subscribe(basket => {
+  private readonly basketService = inject(BasketService);
+
+
+  constructor() {
+    this.subscription = this.basketService.$basket.subscribe(basket => {
       this.totaleAmount = basket.price_total_TTC;
     });
   }

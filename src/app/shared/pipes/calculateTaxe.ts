@@ -11,7 +11,7 @@ export class calculateTaxesPipe implements PipeTransform {
     if (product.isImported) {
       taxAdded = product.price * 0.05;
     }
-    switch (product.category) {
+    switch (product.category.categoryName) {
       case 'Food':
         return Math.round(taxAdded * 20) / 20.0;
       case 'Medecine':

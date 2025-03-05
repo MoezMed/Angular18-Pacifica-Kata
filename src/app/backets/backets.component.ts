@@ -6,6 +6,7 @@ import {MycurrencyPipe} from '../shared/pipes/mycurrency';
 import {RouterLink} from '@angular/router';
 import {Basket} from '../shared/model/basket';
 import {TaxCalculatorService} from '../shared/services/taxes-calculation.service';
+import {BasketService} from '../shared/services/basket.service';
 
 @Component({
   selector: 'app-backets',
@@ -16,6 +17,7 @@ import {TaxCalculatorService} from '../shared/services/taxes-calculation.service
 })
 export class BacketsComponent implements OnInit {
   private readonly productsService = inject(ProductsService);
+  private readonly basketService = inject(BasketService);
   private readonly taxCalculatorService = inject(TaxCalculatorService);
 
   basket!: Basket;
@@ -27,7 +29,7 @@ export class BacketsComponent implements OnInit {
       .subscribe(
       productList => {
         this.products = productList;
-        this.basket = this.productsService.getBasket();
+        this.basket = this.basketService.getBasket();
         this.calculateTotalesTaxesAndPrices();
       }
     );
@@ -40,7 +42,7 @@ export class BacketsComponent implements OnInit {
 
   private calculateTotalesTaxesAndPrices() {
     this.taxCalculatorService.calculateBasketTotals(this.basket);
-    this.productsService.setBasket(this.basket);
+    this.basketService.setBasket(this.basket);
   }
 
   /**

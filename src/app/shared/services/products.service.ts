@@ -14,20 +14,6 @@ export class ProductsService {
   }
 
   $productList: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
-  $basket: BehaviorSubject<Basket> = new BehaviorSubject<Basket>({
-    price_total_TTC: 0,
-    total_Taxes: 0,
-    products: []
-  });
-
-  getBasket(): Basket {
-    return this.$basket.getValue();
-  }
-
-  setBasket(newBasket: Basket) :void {
-    this.$basket.next(newBasket);
-  }
-
   getProductList(): Observable<Product[]> {
     return this.$productList.asObservable();
   }

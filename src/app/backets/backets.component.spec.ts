@@ -20,7 +20,7 @@ describe('BacketsComponent', () => {
       price: 10,
       quantity: 5,
       isImported: false,
-      category: 'Books',
+      category: {id:100, categoryName: 'Books', taxes: 20},
       taxes: 1,
       priceTTC: 11,
       nbrArticleAddedToBasket: 1

@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
 import { DialogModule } from 'primeng/dialog';
 import { CommonModule } from '@angular/common';
-import { Product } from '../../shared/model/product';
+import { Product } from '../../model/product';
 
 @Component({
   selector: 'app-popup-delete-dialog',

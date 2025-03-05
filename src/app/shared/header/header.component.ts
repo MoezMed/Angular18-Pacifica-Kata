@@ -1,7 +1,8 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, inject, OnDestroy} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {ProductsService} from '../services/products.service';
 import {Subscription} from 'rxjs';
+import {BasketService} from '../services/basket.service';
 
 @Component({
   selector: 'app-header',
@@ -16,8 +17,10 @@ export class HeaderComponent implements OnDestroy {
   counter: number = 0;
   private subscription: Subscription;
 
-  constructor(private productService: ProductsService) {
-    this.subscription = this.productService.$basket.subscribe(basket => {
+  private readonly basketService = inject(BasketService);
+
+  constructor() {
+    this.subscription = this.basketService.$basket.subscribe(basket => {
       this.counter = basket.products.reduce((sum, product) => sum + product.nbrArticleAddedToBasket, 0);
     });
   }

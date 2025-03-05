@@ -4,7 +4,8 @@ import {Product} from '../../shared/model/product';
 import {MycurrencyPipe} from '../../shared/pipes/mycurrency';
 import {Basket} from '../../shared/model/basket';
 import {calculateTaxesPipe} from '../../shared/pipes/calculateTaxe';
-import {PopupDeleteComponent} from '../../products/popup-delete/popup-delete.component';
+import {PopupDeleteComponent} from '../../shared/composants/popup-delete/popup-delete.component';
+import {BasketService} from '../../shared/services/basket.service';
 
 @Component({
   selector: 'app-product-table',
@@ -23,6 +24,8 @@ export class ProductTableComponent implements OnInit {
   products: Product[] = [];
 
   private readonly productService = inject(ProductsService);
+  private readonly basketService = inject(BasketService);
+
   @Input() basket!: Basket;
   displayDialogSuppression= false;
   selectedProduct!: Product;
@@ -32,7 +35,7 @@ export class ProductTableComponent implements OnInit {
    * permet d'initialiser la liste des produits
    */
   ngOnInit(): void {
-    this.basket = this.productService.getBasket();
+    this.basket = this.basketService.getBasket();
     this.products = this.productService.getProductListAsValue();
   }
 
@@ -51,7 +54,7 @@ export class ProductTableComponent implements OnInit {
 
     this.productService.setProductList(this.products);
     this.basketUpdated.emit(this.basket);
-    this.productService.setBasket(this.basket);
+    this.basketService.setBasket(this.basket);
   }
 
   updateArticleQuantity(isIncrement: boolean, product: Product) {

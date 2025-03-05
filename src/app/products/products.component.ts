@@ -9,6 +9,7 @@ import {FilterModel} from '../shared/model/filter';
 import {Paginator, PaginatorModule} from 'primeng/paginator';
 import {NoProductsComponent} from './no-products/no-products.component';
 import {Basket} from '../shared/model/basket';
+import {BasketService} from '../shared/services/basket.service';
 
 @Component({
   selector: 'app-products',
@@ -20,6 +21,7 @@ import {Basket} from '../shared/model/basket';
 export class ProductsComponent implements OnInit {
 
   private readonly productsService = inject(ProductsService);
+  private readonly basketService = inject(BasketService);
 
   products: Product[] = [];
   allProducts: Product[] = [];
@@ -53,7 +55,7 @@ export class ProductsComponent implements OnInit {
       }
     );
 
-    this.basket = this.productsService.getBasket();
+    this.basket = this.basketService.getBasket();
   }
 
 
@@ -74,7 +76,7 @@ export class ProductsComponent implements OnInit {
 
     if (filter.category !== '' && filter.category) {
       filteredProducts = filteredProducts.filter(product =>
-        product.category.toLowerCase() === filter.category.toLowerCase()
+        product.category.categoryName.toLowerCase() === filter.category.toLowerCase()
       );
     }
 
@@ -112,6 +114,6 @@ export class ProductsComponent implements OnInit {
   }
 
   updateBasket($event: Basket): void {
-    this.productsService.setBasket($event);
+    this.basketService.setBasket($event);
   }
 }

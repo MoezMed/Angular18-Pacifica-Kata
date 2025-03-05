@@ -6,8 +6,8 @@ import {InfoTofiltreModel} from '../shared/model/infoTofiltre.model';
 import {NgClass} from '@angular/common';
 import {
   PacificaSelectCommunComponent
-} from '../shared/commun/pacifica-select/component/pacifica-select-commun.component';
-import {ItemValue} from '../shared/commun/pacifica-select/model/ItemValue';
+} from '../shared/composants/pacifica-select/component/pacifica-select-commun.component';
+import {ItemValue} from '../shared/composants/pacifica-select/model/ItemValue';
 
 @Component({
   selector: 'app-filter',
@@ -102,8 +102,8 @@ export class FilterComponent implements OnInit {
   private setCategotyList() {
     if (this.products.length > 0) {
       this.products.map(product => {
-        if (!this.categories.includes(product.category)) {
-          this.categories.push(product.category.toUpperCase());
+        if (!this.categories.includes(product.category.categoryName)) {
+          this.categories.push(product.category.categoryName.toUpperCase());
         }
       });
       this.filtreCategoryCheckbox = this.countProductsByCategory(this.products);
@@ -140,12 +140,12 @@ export class FilterComponent implements OnInit {
 
     products.forEach((products: Product) => {
       if (products.category) {
-        const key = products.category;
+        const key = products.category.categoryName;
         if (countDocsByTypeMetierOfContrat[key]) {
           countDocsByTypeMetierOfContrat[key].countCategory++;
         } else {
           countDocsByTypeMetierOfContrat[key] = {
-            countCategory: 1, libelle: products.category.toUpperCase(), code: products.category
+            countCategory: 1, libelle: products.category.categoryName.toUpperCase(), code: products.category.categoryName
           };
         }
       }

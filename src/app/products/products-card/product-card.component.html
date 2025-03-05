@@ -1,12 +1,12 @@
 <div class="card">
   <div class="card-body">
     <div class="card-logo">
-      <img src="{{product.category | logoByCategory}}" alt="logo">
+      <img src="{{product.category.categoryName | logoByCategory}}" alt="logo">
     </div>
 
     <h2 class="card-title" data-test="card-title">{{ product.productName }}</h2>
     <div>
-      Categorie: {{ product.category }}
+      Categorie: {{ product.category.categoryName }}
     </div>
     <div>
       Prix:  {{ product.price | mycurrency }}

@@ -5,6 +5,7 @@ import {MycurrencyPipe} from '../../shared/pipes/mycurrency';
 import {NgClass} from '@angular/common';
 import {LogoByCategoryPipe} from '../../shared/pipes/logoByCategory';
 import {Basket} from '../../shared/model/basket';
+import {BasketService} from '../../shared/services/basket.service';
 
 @Component({
   selector: 'app-product-card',
@@ -15,6 +16,7 @@ import {Basket} from '../../shared/model/basket';
 })
 export class ProductCardComponent implements OnInit {
 
+  private readonly basketService = inject(BasketService);
 
   @Input() product!: Product;
   @Output() basketUpdated: EventEmitter<Basket> = new EventEmitter<Basket>;
@@ -46,7 +48,7 @@ export class ProductCardComponent implements OnInit {
     if(this.product.quantity === 0){
       return;
     }
-    this.basket = this.productsService.getBasket();
+    this.basket = this.basketService.getBasket();
 
     // Update the current product first
     this.product = {
