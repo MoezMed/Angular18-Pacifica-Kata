@@ -37,7 +37,7 @@ export class ProductsComponent implements OnInit {
   public lastItem: number = 9;
   public first: number = 0;
   public isDisabledAllButton: boolean = false;
-  protected basket!: Basket;
+  protected basket: Basket = {} as Basket;
 
   ngOnInit(): void {
     this.productsService.getProductList().subscribe(
